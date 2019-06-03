@@ -81,7 +81,7 @@ tr
 {
     border: 1px solid black;
     width: 130px;
-    height: 6vh;
+    height: 20vh;
     
     margin: 1em;
     padding: 1em;
@@ -101,4 +101,16 @@ tr
 {
     border: 1px solid rgba(100, 149, 237, 0);
     opacity: 0;
+}
+
+.jours a
+{
+    margin: 1em;
+    display: block;
+    /*font-size: 0.8em;*/
+}
+
+.compet
+{
+    background-color: rgba(163, 73, 164, 0.3);
 }

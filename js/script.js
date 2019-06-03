@@ -13,6 +13,14 @@ function checkTable()
     }
 }
 
+function randomColor()
+{
+    let couleurs = ["bleu", "rouge", "violet", "jaune", "vert"];
+    let nbreAleatoire = parseInt(Math.random() * (4 - 0) + 0);
+
+    return couleurs[nbreAleatoire];
+}
+
 function trouverJourTotal(mois)
 {
     let total = 0;
@@ -112,9 +120,75 @@ function chargerMois(mois, today)
     
 }
 
-function afficherCompetMois(data)
+function showMonthCompet(mois, jours, nom, nomComplet)
+{
+    let select = document.getElementById("month");
+    
+    if (parseInt(mois)==parseInt(select.selectedIndex+1))
+    {
+        let td = document.querySelectorAll(".jours");
+         for (let i=0; i<td.length; i++)
+        {
+            let couleur = randomColor();
+            if (td[i].innerText == parseInt(jours))
+            {
+                 td[i].classList.add("compet");
+                 td[i].setAttribute("data-name", nomComplet);
+                 
+                 let compet = document.createElement("a");
+                 compet.innerText = nom;
+                 compet.setAttribute("href", "#");
+                 
+                 let compet2 = document.createElement("a");
+                 compet2.innerText = nomComplet;
+                 compet2.setAttribute("href", "#");
+                 
+                 td[i].appendChild(compet);
+                 td[i].appendChild(compet2);
+            }
+        }
+    }
+}
+
+function extraireMois(date)
+{
+    return date.substr(5, date.indexOf("-")-2);
+}
+
+function extraireJour(date)
+{
+    return date.substr(8, date.length);
+}
+
+function formatData(data)
 {
     //Ici il va falloir trier les data par date
+    for (let i=0; i<data.length; i++)
+    {
+        let donnees = JSON.parse(data[i]);
+        console.log(donnees);
+        
+        for (let j=0; j<donnees.length; j++)
+        {
+            let dateDebut = donnees[j].begin_at;
+            dateDebut = dateDebut.substr(0, 10);
+            
+            let moisD = extraireMois(dateDebut);
+            let jourD = extraireJour(dateDebut);
+            
+            showMonthCompet(moisD, jourD, donnees[j].league.name, donnees[j].serie.full_name);
+
+            let dateFin = donnees[j].end_at;
+            dateFin = dateFin.substr(0, 10);
+            
+            let moisF = extraireMois(dateFin);
+            let joursF = extraireJour(dateFin);
+            
+            showMonthCompet(moisF, joursF, donnees[j].league.name, donnees[j].serie.full_name);
+        }
+        
+    }
+    
 }
 
 function requeteMois()
@@ -127,8 +201,9 @@ function requeteMois()
         success: function(data)
         {
             let json = JSON.parse(data);
-            console.log(json);
-            afficherCompetMois(json);        
+            
+            
+            formatData(json);     
         }
     });   
     
@@ -151,6 +226,7 @@ $(function(){
    {
        moisCourant=select.selectedIndex+1;
        chargerMois(moisCourant, today);
+       requeteMois();
        
    });
    
@@ -165,6 +241,7 @@ $(function(){
        select.selectedIndex=moisCourant-1;
        
        chargerMois(moisCourant, today); 
+       requeteMois();
    });
    
    let previous = document.getElementById("leftArrow");
@@ -178,6 +255,7 @@ $(function(){
        select.selectedIndex=moisCourant-1; 
        
        chargerMois(moisCourant, today); 
+       requeteMois();
    });
    
    
