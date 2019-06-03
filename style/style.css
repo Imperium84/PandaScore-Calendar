@@ -1,0 +1,104 @@
+body
+{
+    max-width: 1920px;
+    margin: auto;
+    text-align: center;
+}
+
+li
+{
+    list-style: none;
+}
+
+header
+{
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    
+    justify-content: space-around;
+}
+
+#entete ul
+{
+    display: flex;
+    flex-wrap: wrap;
+    
+    justify-content: space-around;
+}
+
+#leftArrow
+{
+    width: 30px;
+    height: 30px;
+}
+
+#rightArrow
+{
+    width: 30px;
+    height: 30px;
+}
+
+#check
+{
+    margin: 0 auto;
+    width: 72%;
+    height: 70vh;
+    
+    background-color: rgba(241, 233, 219, 1);
+    border: 2px solid black;
+}
+
+tr
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+}
+
+#nomJours
+{
+    background-color: rgba(64, 0, 128, 0.4);
+    color: gold;
+    border-bottom: 2px solid black;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+#nomJours td
+{
+    /*border: 1px solid white;*/
+    height: 2vh;
+    width: 120px;
+    
+    margin: 1em ;
+    padding: 1em;
+}
+
+.jours
+{
+    border: 1px solid black;
+    width: 130px;
+    height: 6vh;
+    
+    margin: 1em;
+    padding: 1em;
+    
+    color: black;
+    background-color: rgba(0, 0, 0, 0.1);
+    
+    font-size: 0.8em;
+}
+
+.jours.courant
+{
+    background-color: rgba(100, 0, 0, 0.3);
+}
+
+.jours.unexist
+{
+    border: 1px solid rgba(100, 149, 237, 0);
+    opacity: 0;
+}
