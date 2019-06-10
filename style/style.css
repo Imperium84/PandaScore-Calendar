@@ -1,8 +1,39 @@
+@font-face {
+    font-family: 'Cyberfunk';
+    src: url('cyberfunk/Cyberfunk.eot');
+    src: url('cyberfunk/Cyberfunk.eot?#iefix') format('embedded-opentype'),
+        url('cyberfunk/Cyberfunk.woff2') format('woff2'),
+        url('cyberfunk/Cyberfunk.woff') format('woff'),
+        url('cyberfunk/Cyberfunk.svg#Cyberfunk') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
 body
 {
     max-width: 1920px;
-    margin: auto;
+    margin: 0 auto;
     text-align: center;
+    padding: 0;
+    font-family: Cyberfunk;
+}
+
+*
+{
+    box-sizing: border-box;
+}
+
+h1
+{
+    color: red;
+    font-size: 3em;
+}
+
+a
+{
+    color: black;
 }
 
 li
@@ -10,13 +41,25 @@ li
     list-style: none;
 }
 
-header
+main
 {
-    margin: 1em;
     display: flex;
     flex-wrap: wrap;
-    
+}
+
+header
+{
+    margin: 1em 0 1em 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
     justify-content: space-around;
+}
+
+section
+{
+    width: 40%;
 }
 
 #entete ul
@@ -39,14 +82,15 @@ header
     height: 30px;
 }
 
-#check
+#calendrier
 {
     margin: 0 auto;
-    width: 72%;
-    height: 70vh;
+    width: 700px;
+    height: 45vh;
     
     background-color: rgba(241, 233, 219, 1);
     border: 2px solid black;
+    border-radius: 15px;
 }
 
 tr
@@ -59,19 +103,21 @@ tr
 
 #nomJours
 {
-    background-color: rgba(64, 0, 128, 0.4);
-    color: gold;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: yellow;
     border-bottom: 2px solid black;
     margin: 0;
     padding: 0;
     font-weight: bold;
+    
+    
 }
 
 #nomJours td
 {
     /*border: 1px solid white;*/
     height: 2vh;
-    width: 120px;
+    width: 60px;
     
     margin: 1em ;
     padding: 1em;
@@ -80,8 +126,9 @@ tr
 .jours
 {
     border: 1px solid black;
-    width: 130px;
-    height: 20vh;
+    border-radius: 5px;
+    width: 70px;
+    height: 50px;
     
     margin: 1em;
     padding: 1em;
@@ -94,7 +141,7 @@ tr
 
 .jours.courant
 {
-    background-color: rgba(100, 0, 0, 0.3);
+    border-radius: 50px;
 }
 
 .jours.unexist
@@ -109,8 +156,111 @@ tr
     display: block;
     /*font-size: 0.8em;*/
 }
-
-.compet
+.jours.compet
 {
-    background-color: rgba(163, 73, 164, 0.3);
+    cursor: pointer;
 }
+
+.nameCompet.hide
+{
+    display: none;
+}
+
+.jours.compet:hover
+{
+    border: 2px solid white;
+}
+
+.jours[data-color="blue"]
+{
+    background-color: rgba(0, 0, 230, 0.3);
+}
+
+.jours[data-color="red"]
+{
+    background-color: rgba(230, 0, 0, 0.3);
+}
+
+.jours[data-color="yellow"]
+{
+    background-color: rgba(230, 230, 0, 0.3);
+}
+
+.jours[data-color="purple"]
+{
+    background-color: rgba(230, 0, 150, 0.3);
+}
+
+.jours[data-color="green"]
+{
+    background-color: rgba(0, 230, 0, 0.3);
+}
+
+.jours[data-color="brown"]
+{
+    background-color: rgba(128, 64, 0, 0.3);
+}
+
+.jours[data-color="grey"]
+{
+    background-color: rgba(192, 192, 192, 0.3);
+}
+
+.jours[data-color="cyan"]
+{
+    background-color: rgba(0, 230, 230, 0.3);
+}
+
+.div-compet
+{
+    /*background-color: rgba(163, 73, 164, 0.3);*/
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    line-height: 2.2em;
+}
+
+#fond
+{
+  width: 59%;
+  margin: 0;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 230, 0.3);
+
+  opacity: 0;
+  transition-duration: 2.5s;
+}
+
+#fond.transition
+{ 
+    opacity: 1;
+}
+
+#principale h2
+{
+    margin-top: 0;
+    padding: 0;
+}
+
+#droite, #gauche, #centre
+{
+    width: calc(100%/3);
+}
+
+#gauche img
+{
+    width: 200px;
+}
+
+#principale > div
+{
+    display: flex;
+}
+
+/*bouton
+{
+    width: 100px;
+    background-image: url("ico/bouton.jpg");
+}*/

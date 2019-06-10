@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Cyberfunk';
+    src: url('Cyberfunk.eot');
+    src: url('Cyberfunk.eot?#iefix') format('embedded-opentype'),
+        url('Cyberfunk.woff2') format('woff2'),
+        url('Cyberfunk.woff') format('woff'),
+        url('Cyberfunk.svg#Cyberfunk') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
